@@ -223,7 +223,7 @@ class plgSystemTFA extends JPlugin
 		
 		// is backup utlity used
 		$backupCode = $tfa->backup->code; 
-		if(!$this->_is_varified && $backupCode && $key === $backupCode) {
+		if(!$this->_is_varified && $backupCode && $key == $backupCode) {
 			$this->_is_varified = true;
 			$this->_changeCodeFrequency();
 		}
@@ -268,6 +268,8 @@ class plgSystemTFA extends JPlugin
 	 */
 	function recovery() 
 	{
+		$this->loadLanguage();
+		
 		// get current user
 		$user = JFactory::getUser();
 		$email = $user->email;
